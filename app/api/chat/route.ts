@@ -1,5 +1,7 @@
-import { openai } from '@ai-sdk/openai';
+import { OpenAI } from '@ai-sdk/openai';
 import { StreamingTextResponse, experimental_streamText } from 'ai';
+
+const openai = new OpenAI({ baseURL: process.env.OPENAI_BASE_URL, });
 
 export const runtime = 'edge';
 
