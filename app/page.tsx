@@ -1,5 +1,6 @@
 'use client';
 
+import { MemoizedReactMarkdown } from '@/components/markdown';
 import { useChat } from 'ai/react';
 
 export default function Chat() {
@@ -7,9 +8,15 @@ export default function Chat() {
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
       {messages.map(m => (
-        <div key={m.id} className="whitespace-pre-wrap">
-          {m.role === 'user' ? 'User: ' : 'AI: '}
-          {m.content}
+        <div key={m.id}>
+          <div className="whitespace-pre-wrap">
+            {m.role === 'user' ? 'User: ' : 'AI: '}
+          </div>
+          <div>
+            <MemoizedReactMarkdown>
+              {m.content}
+            </MemoizedReactMarkdown>
+          </div>
         </div>
       ))}
 
